@@ -171,13 +171,15 @@ class pdfMerger:
 
             success = merge.mergePDFs(self.pdfPaths,pdfsInOrder,savePath)
             if(success):
-                for item in self.pdfTV.get_children():
+                messagebox.showinfo("Success!","\"merged.pdf\" Created Successfully!")
+            else:
+                messagebox.showerror("Error!","Something went wrong while merging.")
+            
+            for item in self.pdfTV.get_children():
                     itemKey = self.pdfTV.item(item,'values')[0]
                     self.pdfPaths.pop(itemKey)
                     self.pdfTV.delete(item)
-                self.triggerBtns()
-            else:
-                messagebox.showerror("Error","Something went wrong while merging.")
+            self.triggerBtns()
         else:
             pass
 
